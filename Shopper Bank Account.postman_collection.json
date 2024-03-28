@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "16e83cc1-4987-4f78-907c-2bef7bba653b",
+		"name": "Shopper Bank Account",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33643733",
+		"_collection_link": "https://www.postman.com/spacecraft-specialist-7984735/workspace/shopperstack/collection/33643733-16e83cc1-4987-4f78-907c-2bef7bba653b?action=share&source=collection_link&creator=33643733"
+	},
+	"item": [
+		{
+			"name": "Create bank account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWTtoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/bankaccounts?bankName=TBI&email=adi@gmail.com&shopperId=55906",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"bankaccounts"
+					],
+					"query": [
+						{
+							"key": "bankName",
+							"value": "TBI"
+						},
+						{
+							"key": "email",
+							"value": "adi@gmail.com"
+						},
+						{
+							"key": "shopperId",
+							"value": "55906"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all bank account of shopper",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWTtoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/bankaccounts?shopperId=55906",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"bankaccounts"
+					],
+					"query": [
+						{
+							"key": "shopperId",
+							"value": "55906"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update bank account balance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWTtoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/bankaccounts/?action=DEBIT&amount=10000&number=5014401191607726",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"bankaccounts",
+						""
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "DEBIT"
+						},
+						{
+							"key": "amount",
+							"value": "10000"
+						},
+						{
+							"key": "number",
+							"value": "5014401191607726"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validates bank account credential",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWTtoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"adi@gmail.com\",\r\n  \"password\": \"Ffpmu4P\",\r\n  \"role\": \"SHOPPER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/bankaccounts/login/?bankName=TBI",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"bankaccounts",
+						"login",
+						""
+					],
+					"query": [
+						{
+							"key": "bankName",
+							"value": "TBI"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
